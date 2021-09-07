@@ -8,6 +8,7 @@ Project:    PostProcessor
 File:       Landsurvey.py
 By:         JOR
 Version:    0.1     25JUN21     Branch from Bathymetry tools, origins 2013
+            0.2     07SEP21     Cut down for specific RTK processing only
 
 This programme does post-processing of NMEA text files, extracting GPS data only
 """
