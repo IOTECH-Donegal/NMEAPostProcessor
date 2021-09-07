@@ -29,11 +29,17 @@ def parse_gga(sentence):
 
         # Get the decimal degree values of position
         latitude_dm = (list_of_values[2])
-        dd_latitude_degrees = latitude_dm_to_dd(latitude_dm)
+        dm_latitude_degrees = int(latitude_dm[0:2])
+        dm_latitude_minutes = float(latitude_dm[2:])
+        dm_latitude_minutes_fraction = float(dm_latitude_minutes / 60)
+        dd_latitude_degrees = round(dm_latitude_degrees + dm_latitude_minutes_fraction, 8)
 
         # Longitude converts to negative, edit this if working east of Greenwich
         longitude_dm = (list_of_values[4])
-        dd_longitude_degrees = longitude_dm_to_dd(longitude_dm)
+        dm_longitude_degrees = int(longitude_dm[0:3])
+        dm_longitude_minutes = float(longitude_dm[3:])
+        dm_longitude_minutes_fraction = float(dm_longitude_minutes / 60)
+        dd_longitude_degrees = round(-dm_longitude_degrees - dm_longitude_minutes_fraction, 8)
 
         # To get the true altitude, add height above MSL to HoG and then convert to OSGM15 externally.
         msl = list_of_values[9]
@@ -118,27 +124,3 @@ def parse_gst(sentence):
         print(f'[GST] Error parsing {sentence}')
 
     return sigma_latitude, sigma_longitude, sigma_altitude
-
-
-def longitude_dm_to_dd(longitude_dm):
-    '''
-    Convert position in the format DDMM.mmmmmm to DD.ddddddd
-    :param longitude_dm:
-    :return: longitude in decimal degrees
-    '''
-    dm_longitude_degrees = int(longitude_dm[0:3])
-    dm_longitude_minutes = float(longitude_dm[3:])
-    dm_longitude_minutes_fraction = float(dm_longitude_minutes / 60)
-    return round(-dm_longitude_degrees - dm_longitude_minutes_fraction, 8)
-
-
-def latitude_dm_to_dd(latitude_dm):
-    '''
-    Convert position in the format DDMM.mmmmmm to DD.ddddddd
-    :param latitude_dm:
-    :return: latitude in decimal degrees
-    '''
-    dm_latitude_degrees = int(latitude_dm[0:2])
-    dm_latitude_minutes = float(latitude_dm[2:])
-    dm_latitude_minutes_fraction = float(dm_latitude_minutes / 60)
-    return round(dm_latitude_degrees + dm_latitude_minutes_fraction, 8)
