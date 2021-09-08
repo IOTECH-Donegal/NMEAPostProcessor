@@ -2,6 +2,9 @@
 Postprocessing of logfiles from field work.
 ## LandSurveyor
 Processes NMEA  0183 v4.11 GNSS data only, GGA, RMC and GST.
+
+Alpha version code, requires verification and validation.
+
 Creates a CSV file with: 
 - date_of_fix in DDMMYY
 - gps_time in HH:MM:SS.ss
@@ -14,4 +17,7 @@ Creates a CSV file with:
 - sigma_longitude
 - sigma_altitude
 
-
+### ToBeDone
+- DEVOPS stuff
+- Tests
+- Documentation
