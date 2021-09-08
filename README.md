@@ -1,5 +1,17 @@
 # PostProcessor
 Postprocessing of logfiles from field work.
 ## LandSurveyor
-Processes GNSS data only
+Processes NMEA  0183 v4.11 GNSS data only, GGA, RMC and GST.
+Creates a CSV file with: 
+- date_of_fix in DDMMYY
+- gps_time in HH:MM:SS.ss
+- dd_longitude_degrees to 8 decimal places
+- dd_latitude_degrees to 8 decimal places
+- altitude to 3 decimal places 
+- sog in m/s
+- cmg in degrees
+- sigma_latitude
+- sigma_longitude
+- sigma_altitude
+
 
