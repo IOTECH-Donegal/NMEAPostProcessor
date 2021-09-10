@@ -92,7 +92,7 @@ def main():
                             print('[GPS-parse] Error parsing sentence')
                         finally:
                             if gga_valid and rmc_valid and gst_valid:
-                                print(date_of_fix, gps_time, dd_longitude_degrees, dd_latitude_degrees, altitude3,sog, cmg, sigma_latitude, sigma_longitude, sigma_altitude)
+                                print(date_of_fix, gps_time, dd_longitude_degrees, dd_latitude_degrees, altitude3,sog, cmg, hdg, sigma_latitude, sigma_longitude, sigma_altitude)
                                 save_csv(date_of_fix, gps_time, dd_longitude_degrees, dd_latitude_degrees, altitude3,sog, cmg, sigma_latitude, sigma_longitude, sigma_altitude)
                                 # Reset flags
                                 gga_valid = False
